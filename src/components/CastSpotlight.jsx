@@ -42,7 +42,7 @@ function CastSpotlight() {
   ];
 
   return (
-    <section className=" p-8 w-full mt-10 mb-10">
+    <section className=" p-8 w-full mt-37 mb-10">
       <motion.h1
         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-black leading-none mb-14 text-right"
         initial={{ opacity: 0, y: 40 }}

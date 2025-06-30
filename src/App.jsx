@@ -1,16 +1,19 @@
-import CastSpotlight from "./components/CastSpotlight";
-import Countdown from "./components/Countdown";
-import FilmSynopsis from "./components/FilmSynopsis";
+import { lazy, Suspense } from "react";
 
-import SuperMan from "./components/SuperMan";
+const CastSpotlight = lazy(() => import("./components/CastSpotlight"));
+const Countdown = lazy(() => import("./components/Countdown"));
+const FilmSynopsis = lazy(() => import("./components/FilmSynopsis"));
+const SuperMan = lazy(() => import("./components/SuperMan"));
 
 function App() {
   return (
     <main>
-      <SuperMan />
-      <FilmSynopsis />
-      <CastSpotlight />
-      <Countdown />
+      <Suspense fallback={<div>Loading...</div>}>
+        <SuperMan />
+        <FilmSynopsis />
+        <CastSpotlight />
+        <Countdown />
+      </Suspense>
     </main>
   );
 }

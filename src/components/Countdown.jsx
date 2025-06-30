@@ -108,7 +108,7 @@ function Countdown() {
             {/* Release Date Info */}
             <motion.div
               className="text-center bg-black/60 backdrop-blur-sm border border-white/20 rounded-lg p-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
