@@ -11,7 +11,6 @@ function Countdown() {
     seconds: 0,
   });
   const [mounted, setMounted] = useState(false);
-  const [isOut, setIsOut] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -33,9 +32,6 @@ function Countdown() {
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setTimeLeft({ days, hours, minutes, seconds });
-        setIsOut(false);
-      } else {
-        setIsOut(true);
       }
     };
 
@@ -71,60 +67,54 @@ function Countdown() {
   return (
     <section className="w-full mb-10 mt-16">
       <div className="max-w-4xl mx-auto">
-        {isOut ? (
-          <div className="text-center text-4xl font-bold text-yellow-400 mb-12">
-            IT&apos;S OUT ALREADY!!
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {timeUnits.map((unit) => (
-                <div key={unit.label} className="text-center">
-                  <motion.div
-                    className={`relative bg-gradient-to-br ${unit.color} rounded-lg p-6 shadow-2xl border border-white/20 group hover:scale-105 transition-transform duration-300`}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  >
-                    {/* Glow effect */}
-                    <div
-                      className={`absolute -inset-1 bg-gradient-to-br ${unit.color} rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300`}
-                    />
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            {timeUnits.map((unit) => (
+              <div key={unit.label} className="text-center">
+                <motion.div
+                  className={`relative bg-gradient-to-br ${unit.color} rounded-lg p-6 shadow-2xl border border-white/20 group hover:scale-105 transition-transform duration-300`}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                >
+                  {/* Glow effect */}
+                  <div
+                    className={`absolute -inset-1 bg-gradient-to-br ${unit.color} rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300`}
+                  />
 
-                    <div className="relative">
-                      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 tabular-nums">
-                        {unit.value.toString().padStart(2, "0")}
-                      </div>
-                      <div className="text-sm md:text-base text-white/80 uppercase tracking-wider font-semibold">
-                        {unit.label}
-                      </div>
+                  <div className="relative">
+                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 tabular-nums">
+                      {unit.value.toString().padStart(2, "0")}
                     </div>
-                  </motion.div>
-                </div>
-              ))}
-            </div>
+                    <div className="text-sm md:text-base text-white/80 uppercase tracking-wider font-semibold">
+                      {unit.label}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
 
-            {/* Release Date Info */}
-            <motion.div
-              className="text-center bg-black/60 backdrop-blur-sm border border-white/20 rounded-lg p-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <span className="text-yellow-400 font-semibold text-lg">
-                  RELEASE DATE
-                </span>
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                July 11, 2025
-              </div>
-              <div className="text-gray-300">In theaters worldwide</div>
-            </motion.div>
-          </>
-        )}
+          {/* Release Date Info */}
+          <motion.div
+            className="text-center bg-black/60 backdrop-blur-sm border border-white/20 rounded-lg p-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="text-yellow-400 font-semibold text-lg">
+                RELEASE DATE
+              </span>
+            </div>
+            <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              July 11, 2025
+            </div>
+            <div className="text-gray-300">In theaters worldwide</div>
+          </motion.div>
+        </>
       </div>
     </section>
   );
